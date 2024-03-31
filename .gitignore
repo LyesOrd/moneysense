@@ -1,0 +1,26 @@
+node_modules/
+.idea/
+/public/downloads/files/*
+bower_components
+coverage/
+.sass-cache/
+.tmp/
+dist/
+// keep empty directories
+!*.gitkeep
+version
+*.mp4
+e2e/cypress/screenshots/*
+*.swp
+server/npm-debug.log
+*marko.js
+**/.nyc_output/
+export/*.csv
+export/*.zip
+server/src/id_rsa*
+front/assets/
+server/zip
+**/.env
+**/.DS_Store
+.DS_Store
+front/src/environments/.env.ts

@@ -1,6 +1,17 @@
 version: '3.5'
 
 services:
+  # frontend:
+  #   container_name: moneysens_frontend
+  #   image: moneysense/frontend
+  #   build:
+  #     dockerfile: ./front/Dockerfile
+  #   depends_on:
+  #     - backend
+  #   ports:
+  #     - "3000:80"
+  #   networks:
+  #     - moneysense_network
   db:
     image: postgres:latest
     restart: always
@@ -8,23 +19,25 @@ services:
       - POSTGRES_PASSWORD=postgres
     container_name: postgres
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - /volumes/pgdata
     ports:
       - '5432:5432'
+    networks:
+      - moneysense_network
 
-  app:
+  backend:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     container_name: backend
-    environment:
-      - PORT=${PORT}
     ports:
-      - '3001:3001'
+      - '3000:3000'
     depends_on:
       - db
     volumes:
-      - ./src:/app/src
+      - .:/usr/src/app
+    networks:
+      - moneysense_network
 
   pgadmin:
     image: dpage/pgadmin4
@@ -37,3 +50,8 @@ services:
       - '5050:80'
     depends_on:
       - db
+    networks:
+      - moneysense_network
+networks:
+  moneysense_network:
+    name: moneysense_network
