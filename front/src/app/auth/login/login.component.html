@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="left">
+      <img src="../../../assets/cash-app-moneysense.jpg" alt="Image">
+    </div>
+    <div class="right">
+        <mat-card>
+            <mat-card-header>Se connecter</mat-card-header>
+            <mat-card-content class="mat-card-content">
+                <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+                    <br>
+                    <div class="emailInput">
+                        <mat-form-field>
+                        <input matInput
+                               placeholder="email@email.com"
+                               class="form-control"
+                               [formControl]="$any(form).controls['email']"
+                               (blur)="updatedErrorMessage()"
+                               required>
+                        @if (form.get('email')?.invalid) {
+                          <mat-error>{{errorMessage}}</mat-error>
+                        }
+                      </mat-form-field>
+                    </div>
+                    <div class="passwordInput">
+                        <mat-form-field>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                    </div>
+                      
+                <div class="button">
+                    <button type="submit" mat-button>Se connecter</button>
+                </div>
+                
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+  </div>
+
+
+
+
+
