@@ -15,6 +15,7 @@ import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UserService } from '../user.service';
 
 export interface LoginForm {
   email: string;
@@ -47,7 +48,11 @@ export class LoginComponent {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private userService: UserService
+  ) {
     merge(
       this.form['controls']['email'].statusChanges,
       this.form['controls']['email'].valueChanges
@@ -76,13 +81,22 @@ export class LoginComponent {
           this.isLoggedIn = true;
           this.isLoginFailed = false;
           this.router.navigate(['/dashboard']);
+          this.userService.setCurrentUser({ email, password });
+          this.userService.isLoggedIn()
+            ? this.router.navigate(['/dashboard'])
+            : this.router.navigate(['/login']);
         },
 
         error: (err) => {
           this.isLoginFailed = true;
-          this.errorMessage = err.error.message;
+          console.log(err);
+          // this.errorMessage = err.error.message;
         },
       });
     }
+  }
+
+  navigateToRegister(): void {
+    this.router.navigate(['/register']);
   }
 }

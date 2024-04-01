@@ -1,0 +1,83 @@
+<nav>
+  <div class="logo">
+    <img src="assets/logo.png" alt="logo" />
+    <h1>Moneysense</h1>
+  </div>
+  <div class="menu">
+    <ul>
+      <li class="button">
+        <a class="button" href="/dashboard">Accueil</a>
+      </li>
+      <li class="button">
+        <a routerLink="/cryptotrack">CryptoTrack</a>
+      </li>
+      <li class="button">
+        <a routerLink="/about">A propos</a>
+      </li>
+      <li>
+        <div class="navbar-actions">
+          @if (isLoggedIn) {
+            <button class="button" (click)="logout()">Déconnexion</button>
+          }
+          @else {
+            <button (click)="navigateToLogin()">Se connecter</button>
+            <button (click)="navigateToRegister()">S'inscrire</button>
+          }
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="hamburger" #hamburger>
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div>
+</nav>
+<div class="menubar" #menubar>
+  <ul>
+    <li class="button">
+      <a href="/dashboard">Accueil</a>
+    </li>
+    <li>
+      <a routerLink="/cryptotrack">CryptoTrack</a>
+    </li>
+    <li>
+      <a routerLink="/about">A propos</a>
+    </li>
+    <li>
+      <div class="navbar-actions">
+        @if (isLoggedIn) {
+          <button class="button" (click)="logout()">Se déconnecter</button>
+        }
+        @else {
+          <button (click)="navigateToLogin()">Se connecter</button>
+          <button (click)="navigateToRegister()">S'inscrire</button>
+        }
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<!-- <nav class="navbar">
+  <div class="navbar-logo">
+    <img src="assets/logo.png" alt="My App Logo" />
+  </div>
+  <ul class="navbar-links">
+    <li><a routerLink="/dashboard">Accueil</a></li>
+    <li><a routerLink="/about">A propos</a></li>
+    <li><a routerLink="/userinfo">Mes informations</a></li>
+  </ul>
+  <div class="navbar-actions">
+    @if (isLoggedIn) {
+      <button (click)="logout()">Se déconnecter</button>
+    }
+    @else {
+      <button (click)="navigateToLogin()">Se connecter</button>
+      <button (click)="navigateToRegister()">S'inscrire</button>
+    }
+  </div>
+</nav> -->

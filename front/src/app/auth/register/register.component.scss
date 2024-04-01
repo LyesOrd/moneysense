@@ -1,0 +1,51 @@
+
+.container {
+  display: flex;
+  width: 100%;
+}
+  
+.left, .right {
+  width: 50%;
+}
+  
+.left {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 100%;
+}
+
+.left img {
+  max-width: 100%; /* Limite la largeur de l'image à 100% de la taille du parent (50% de la page) */
+  max-height: 100%; /* Limite la hauteur de l'image à 100% de la taille du parent (50% de la page) */
+  height: 100vh;
+  object-fit: cover;
+}
+  
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button{
+  background-color: #05d34c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #04a043;
+}
+
+.emailInput, .passwordInput {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
