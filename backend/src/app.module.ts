@@ -7,6 +7,7 @@ import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import { DashboardService } from './dashboard/dashboard/dashboard.service';
 
 @Module({
   imports: [
@@ -29,6 +30,6 @@ import { CacheModule } from '@nestjs/cache-manager';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, DashboardService],
 })
 export class AppModule {}
