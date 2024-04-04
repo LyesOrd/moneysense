@@ -11,7 +11,7 @@ Application de Gestion de Budget
 
 Au choix :
 
-- En vous rendant directement à l'adresse : https://moneysense.dev-ord.fr/
+- En vous rendant directement à l'adresse : http://moneysense.dev-ord.fr/
 
 ou
 
